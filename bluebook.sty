@@ -8,6 +8,7 @@
 \ProvidesPackage{bluebook}[1994/12/06\space Inline bibliography style]
 \ProcessOptions
 
+
 % handy functions
 \newcommand{\url}[1]{{\footnotesize{$<$#1$>$}}}
 \newcommand{\etal}{{\em et al.}}
@@ -19,6 +20,7 @@
 \newcommand{\seealso}{{\em see also}\xspace}
 \newcommand{\Butsee}{{\em But see}\xspace}
 \newcommand{\butsee}{{\em but see}\xspace}
+\newcommand{\Cf}{{\em Cf.}\xspace}
 \newcommand{\infra}{{\em infra}\xspace}
 \newcommand{\supra}{{\em supra}\xspace}
 
@@ -67,7 +69,7 @@
 \newcommand{\Politics}{Pol.\xspace}
 \newcommand{\Property}{Prop.\xspace}
 \newcommand{\Public}{Pub.\xspace}
-\newcommand{\Quarterly}{Q.\xspace}
+\newcommand{\Quarterly}{Q.}
 \newcommand{\Report}{Rep.\xspace}
 \newcommand{\Research}{Res.\xspace}
 \newcommand{\Review}{Rev.\xspace}
@@ -138,12 +140,20 @@
   %% citation, since it provokes messages of "Labels may have changed"
   %% from LaTeX.
 
+
+\let\deref=\@nameuse
+\let\makeref=\@namedef
+%\def\isundef#1#2{\TE@throw\noexpand\ifx\noexpand\@undefined\noexpand#1#2}
+
+%\newcommand{\deref}[1]{\@ifdefined{#1}blah blah blah\else\@nameuse{#1}\fi}
+
 \def\@lastcite{}
 \def\noibid{\gdef\@lastcite{}}
 
 \long\def\@bibcall#1#2#3{\global\@gobbleperiodfalse
 	\@ifundefined{B@#1}%
-		{{#2}\global\@namedef{B@#1}{}\label{#1}}%
+		{{#2}\global\@namedef{B@#1}{}\label{#1}%\expandafter\def\csname pincite@#1\endcsname{xyz #1}}% black magic
+    \global\makeref{P@#1}{xyz #1}}
 		{\@bibsecond{#1}{#3}}%
 	\gdef\@lastcite{#1}%
 }
@@ -161,12 +171,14 @@
   %% multiple citations in one call, as it makes little sense.  The
   %% labels are much too long.
 
-\def\pincite{}
+%\def\pincite{}
 
 \def\cite{\protect\@pcite}
 \def\@pcite{\@ifnextchar [{\@withpagestrue\@citex}{\@withpagesfalse\@citex[]}}
 
 \def\@citex[#1]#2{%\edef\pincite{#2 {#1} x}
+  \def\pin{#2}
+  %\def\pincitesubst #1pincitegoeshere#2{#1\pin#2}
   \if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
 	\@ifundefined{b@#2}%
 		{{\reset@font\bf ?}\@warning

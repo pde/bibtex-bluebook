@@ -1,4 +1,4 @@
-% Bibliography style for footnote references.  The citation is the
+% Bibliography style for footnote references.  The citation is t
 % complete reference the first time, and a shorter reference the
 % following times.  It uses an optional shorttitle entry in the database
 % for the short reference.  For use with inlinebib.sty.
@@ -326,8 +326,8 @@ FUNCTION {format.editors}
     { "" }
     { editor format.names
       editor num.names$ #1 >
-        { ", eds. " * }
-        { ", ed. " * }
+        { ", eds." * }
+        { ", ed." * }
       if$
     }
   if$
@@ -465,7 +465,7 @@ FUNCTION {format.lots.date}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { "$<$" url * "$>$" * }
+    { "\url{" url * "}" * }
   if$
 }
 
@@ -491,12 +491,55 @@ FUNCTION {multi.page.check}
   multiresult
 }
 
+STRINGS { startpage char }
+
+FUNCTION {first.page.in.range}
+{ 't :=
+  #0 'multiresult :=
+  "" 'startpage :=
+    { multiresult not
+      t empty$ not
+      and
+    }
+    { t #1 #1 substring$
+      'char :=
+      char "-" =
+      char "," =
+      char "+" =
+      or or
+        { #1 'multiresult := }
+        { 
+          startpage char * 'startpage :=
+          t #2 global.max$ substring$ 't :=
+        }
+      if$
+    }
+  while$
+  startpage
+}
+
 FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-        { "pp." pages n.dashify tie.or.space.connect }
+	{ "pp." pages n.dashify tie.or.space.connect }
+	{ "p." pages tie.or.space.connect }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.pages.norange}
+{ pages empty$
+    { "" }
+    { pages multi.page.check
+        { 
+          pages
+          first.page.in.range
+        }
         { "p." pages tie.or.space.connect }
+        %{ "pp." pages n.dashify tie.or.space.connect }
+        %{ "p." pages tie.or.space.connect }
       if$
     }
   if$
@@ -776,11 +819,12 @@ FUNCTION {article}
   crossref missing$
     { format.volume output
       journal smallcaps "journal" output.check.nocomma
-      format.date "year" output.check
+      format.pages.norange output.nocomma
+      format.date "year" output.check.nocomma
       format.url output
     }
     { format.article.crossref output.nonnull
-      format.pages output
+      format.pages.norange output
     }
   if$
   new.block
@@ -803,7 +847,8 @@ FUNCTION {book}
   new.block
   title smallcaps "title" output.check
   % cunning hackery to get pincites working
-  % " \pincite " output
+  %"\csname P@" cite$ "\endcsname" * * output
+  %"\ifthenelse{\isundef{" cite$ "}}{}{\deref{P@" cite$ "}}" * * * * output
   crossref missing$
     { format.bvolume output
       new.block
@@ -911,19 +956,19 @@ FUNCTION {inproceedings}
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
-      format.number.series output
+      %format.number.series output
       format.pages output
       address empty$
-        { organization publisher new.sentence.checkb
-          organization output
-          publisher output
-          format.date "year" output.check
+        { %organization publisher new.sentence.checkb
+          %organization output
+          %publisher output
+          format.date "year" output.check.nocomma
         }
         { address output.nonnull
-          format.date "year" output.check
+          format.date "year" output.check.nocomma
           new.sentence
-          organization output
-          publisher output
+          %organization output
+          %publisher output
         }
       if$
     }
@@ -937,8 +982,6 @@ FUNCTION {inproceedings}
   fin.entry
   format.shortref
 }
-
-FUNCTION {conference} { inproceedings }
 
 FUNCTION {manual}
 { output.bibitem
