@@ -9,7 +9,7 @@
 \ProcessOptions
 
   %% Fixed texts
-\def\@bib@ibid{{\em ibid.}}
+\def\@bib@ibid{{\em id.}}
 \def\@bib@cit{cit.}
 
 
@@ -78,7 +78,10 @@
 \long\def\@bibsecond#1#2{%
 	\def\@tempa{#1}%
 	\ifx\@tempa\@lastcite \@bib@ibid\else {#2} \supra note~\ref{#1}\fi
-	\if@withpages \else \global\@gobbleperiodtrue \fi
+	%\if@withpages \else \global\@gobbleperiodtrue \fi
+  % turn off fullstop gobbling.  It may occasionally remain necessary
+  % for Id. citations, but it needs to be done in the .bst I think.
+	\if@withpages \else \global\@gobbleperiodfalse \fi
 }
 
   %% Called for each normal \cite call.  This version does not allow
@@ -90,12 +93,12 @@
 \def\cite{\protect\@pcite}
 \def\@pcite{\@ifnextchar [{\@withpagestrue\@citex}{\@withpagesfalse\@citex[]}}
 
-\def\@citex[#1]#2{ %\def\pincite\{x #2 \{#1\}\}
+\def\@citex[#1]#2{%\edef\pincite{#2 {#1} x}
   \if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
 	\@ifundefined{b@#2}%
 		{{\reset@font\bf ?}\@warning
 			{Citation `#2' on page \thepage \space undefined}}%
-		{\@cite{\@nameuse{b@#2}}{#1}}% <----
+		\@cite{\@nameuse{b@#2}}{#1}% <----
 	\let\next\relax
 	\if@gobbleperiod \let\next\check@period \fi
 	\next
@@ -104,7 +107,7 @@
 
   %% Produces the actual inline citation, no bracketes around it.
 
-\def\@cite#1#2{{#1\if@withpages , #2\fi}}
+\def\@cite#1#2{#1\if@withpages , #2\fi}
 
 
   %% Remove a following period.
