@@ -28,6 +28,7 @@ ENTRY
     edition
     editor
     howpublished
+    onlineonly
     institution
     journal
     key
@@ -465,7 +466,12 @@ FUNCTION {format.lots.date}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { "\url{" url * "}" * }
+    { onlineonly empty$
+      { "" }
+      { "{\em " onlineonly * "} " * }
+      if$
+      "\url{" * url * "}" *
+    }
   if$
 }
 
