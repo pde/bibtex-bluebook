@@ -816,17 +816,26 @@ FUNCTION {article}
   new.block
   format.title "title" output.check
   new.block
-  crossref missing$
+%  crossref missing$
+%    { format.volume output
+%      journal smallcaps "journal" output.check.nocomma
+%      format.pages.norange output.nocomma
+%      format.date "year" output.check.nocomma
+%      format.url output
+%    }
+%    { format.article.crossref output.nonnull
+%      format.pages.norange output
+%    }
+%  if$
+  month missing$
     { format.volume output
-      journal smallcaps "journal" output.check.nocomma
-      format.pages.norange output.nocomma
-      format.date "year" output.check.nocomma
-      format.url output
     }
-    { format.article.crossref output.nonnull
-      format.pages.norange output
-    }
+    'skip$
   if$
+  journal smallcaps "journal" output.check.nocomma
+  format.pages.norange output.nocomma
+  format.date "year" output.check.nocomma
+  format.url output
   new.block
   output.note
   fin.entry
@@ -964,9 +973,9 @@ FUNCTION {inproceedings}
           %publisher output
           format.date "year" output.check.nocomma
         }
-        { address output.nonnull
+        { %address output.nonnull
           format.date "year" output.check.nocomma
-          new.sentence
+          %new.sentence
           %organization output
           %publisher output
         }

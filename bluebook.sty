@@ -8,24 +8,28 @@
 \ProvidesPackage{bluebook}[1994/12/06\space Inline bibliography style]
 \ProcessOptions
 
-
 % handy functions
 \newcommand{\url}[1]{{\footnotesize{$<$#1$>$}}}
 \newcommand{\etal}{{\em et al.}}
-\newcommand{\See}{{\em See}\xspace}
-\newcommand{\see}{{\em see}\xspace}
+\newcommand{\See}{{\em See}}
+\newcommand{\see}{{\em see}}
 \newcommand{\seeeg}{{\em see, e.g.,}\xspace}
 \newcommand{\Seeeg}{{\em See, e.g.,}\xspace}
 \newcommand{\Seealso}{{\em See also}\xspace}
 \newcommand{\seealso}{{\em see also}\xspace}
 \newcommand{\Butsee}{{\em But see}\xspace}
 \newcommand{\butsee}{{\em but see}\xspace}
-\newcommand{\Cf}{{\em Cf.}\xspace}
+\newcommand{\Cf}{{\em Cf$.$}}
 \newcommand{\infra}{{\em infra}\xspace}
 \newcommand{\supra}{{\em supra}\xspace}
 
 % BLUEBOOK CITATION ABBREVIATIONS
 % (expand as necessary)
+
+\def\abbrvspace{\xspace}
+
+% This way LaTeX doesn't think this is the end of a sentence
+\def\fullstop{$.$}
 
 \newcommand{\biband}{\& }
 \newcommand{\bibcomma}{}
@@ -34,54 +38,55 @@
 \newcommand{\bibThe}{}
 \newcommand{\bibthe}{}
 \newcommand{\bibgap}{~}
-\newcommand{\American}{Am.\xspace}
-\newcommand{\Boston}{B.\xspace}
-\newcommand{\Chicago}{Chi.\xspace}
-\newcommand{\Columbia}{Colum.\xspace}
-\newcommand{\Communications}{Comm.\xspace}
-\newcommand{\Connecticut}{Conn.\xspace}
-\newcommand{\Economic}{Eco.\xspace}
-\newcommand{\Economics}{Eco.\xspace}
-\newcommand{\Entertainment}{Ent.\xspace}
-\newcommand{\Environmental}{Env.\xspace}
-\newcommand{\European}{Eur.\xspace}
-\newcommand{\Government}{Gov't\xspace}
-\newcommand{\Harvard}{Harv.\xspace}
-\newcommand{\History}{Hist.\xspace}
-\newcommand{\Law}{L.\xspace}
-\newcommand{\LawJournal}{L.J.\xspace}
-\newcommand{\Industrial}{Indus.\xspace}
-\newcommand{\Information}{Info.\xspace}
-\newcommand{\Intellectual}{Intell.\xspace}
-\newcommand{\International}{Int.\xspace}
-\newcommand{\Journal}{J.\xspace}
-\newcommand{\JournalOfLaw}{J.L.\xspace}
-\newcommand{\National}{Nat'l\xspace}
-\newcommand{\NewYork}{N.Y.\xspace}
-\newcommand{\North}{N.\xspace}
-\newcommand{\Northwestern}{Nw.\xspace}
-\newcommand{\Magazine}{Mag.\xspace}
-\newcommand{\Michigan}{Mich.\xspace}
-\newcommand{\Oregon}{Or.\xspace}
-\newcommand{\Patent}{Pat.\xspace}
-\newcommand{\Philosophy}{Phil.\xspace}
-\newcommand{\Policy}{Pol'y\xspace}
-\newcommand{\Politics}{Pol.\xspace}
-\newcommand{\Property}{Prop.\xspace}
-\newcommand{\Public}{Pub.\xspace}
-\newcommand{\Quarterly}{Q.}
-\newcommand{\Report}{Rep.\xspace}
-\newcommand{\Research}{Res.\xspace}
-\newcommand{\Review}{Rev.\xspace}
-\newcommand{\Society}{Soc'y\xspace}
-\newcommand{\Social}{Soc.\xspace}
-\newcommand{\Studies}{Stud.\xspace}
-\newcommand{\System}{Sys.\xspace}
-\newcommand{\Technology}{Tech.\xspace}
-\newcommand{\Telecommunications}{Telecomm.\xspace}
-\newcommand{\University}{U.\xspace}
-\newcommand{\Vanderbilt}{Vand.\xspace}
-\newcommand{\Virginia}{Va.\xspace}
+\newcommand{\American}{Am\fullstop\abbrvspace}
+\newcommand{\Boston}{B\fullstop\abbrvspace}
+\newcommand{\Chicago}{Chi\fullstop\abbrvspace}
+\newcommand{\Columbia}{Colum\fullstop\abbrvspace}
+\newcommand{\Communications}{Comm\fullstop\abbrvspace}
+\newcommand{\Connecticut}{Conn\fullstop\abbrvspace}
+\newcommand{\Economic}{Eco\fullstop\abbrvspace}
+\newcommand{\Economics}{Eco\fullstop\abbrvspace}
+\newcommand{\Entertainment}{Ent\fullstop\abbrvspace}
+\newcommand{\Environmental}{Env\fullstop\abbrvspace}
+\newcommand{\European}{Eur\fullstop\abbrvspace}
+\newcommand{\Government}{Gov't\abbrvspace}
+\newcommand{\Harvard}{Harv\fullstop\abbrvspace}
+\newcommand{\History}{Hist\fullstop\abbrvspace}
+\newcommand{\Law}{L\fullstop\abbrvspace}
+\newcommand{\LawJournal}{L.J\fullstop\abbrvspace}
+\newcommand{\Industrial}{Indus\fullstop\abbrvspace}
+\newcommand{\Information}{Info\fullstop\abbrvspace}
+\newcommand{\Intellectual}{Intell\fullstop\abbrvspace}
+\newcommand{\International}{Int\fullstop\abbrvspace}
+\newcommand{\Journal}{J\fullstop\abbrvspace}
+\newcommand{\JournalOfLaw}{J.L\fullstop\abbrvspace}
+\newcommand{\National}{Nat'l\abbrvspace}
+\newcommand{\NewYork}{N.Y\fullstop\abbrvspace}
+\newcommand{\North}{N\fullstop\abbrvspace}
+\newcommand{\Northwestern}{Nw\fullstop\abbrvspace}
+\newcommand{\Magazine}{Mag\fullstop\abbrvspace}
+\newcommand{\Michigan}{Mich\fullstop\abbrvspace}
+\newcommand{\Oregon}{Or\fullstop\abbrvspace}
+\newcommand{\Patent}{Pat\fullstop\abbrvspace}
+\newcommand{\Philosophy}{Phil\fullstop\abbrvspace}
+\newcommand{\Policy}{Pol'y\abbrvspace}
+\newcommand{\Politics}{Pol\fullstop\abbrvspace}
+\newcommand{\Property}{Prop\fullstop\abbrvspace}
+\newcommand{\Proceedings}{Proc\fullstop\abbrvspace}
+\newcommand{\Public}{Pub\fullstop\abbrvspace}
+\newcommand{\Quarterly}{Q\fullstop}
+\newcommand{\Report}{Rep\fullstop\abbrvspace}
+\newcommand{\Research}{Res\fullstop\abbrvspace}
+\newcommand{\Review}{Rev\fullstop\abbrvspace}
+\newcommand{\Society}{Soc'y\abbrvspace}
+\newcommand{\Social}{Soc\fullstop\abbrvspace}
+\newcommand{\Studies}{Stud\fullstop\abbrvspace}
+\newcommand{\System}{Sys\fullstop\abbrvspace}
+\newcommand{\Technology}{Tech\fullstop\abbrvspace}
+\newcommand{\Telecommunications}{Telecomm\fullstop\abbrvspace}
+\newcommand{\University}{U\fullstop\abbrvspace}
+\newcommand{\Vanderbilt}{Vand\fullstop\abbrvspace}
+\newcommand{\Virginia}{Va\fullstop\abbrvspace}
 
   %% Fixed texts
 \def\@bib@ibid{{\em id.}}
