@@ -719,8 +719,10 @@ FUNCTION {format.title.short}
 FUNCTION {format.shortref}
 { before.all 'output.state :=
   "\short "
-  format.author.short output
-  format.title.short " \end" * output  % no titles in the Bluebook
+  % no titles in the Bluebook
+  % format.author.short output
+  % format.title.short " \end" * output 
+   format.author.short "{,} \end" * output   %why are the {}s necessary?
 %  duplicate$ ">>>> " swap$ * " <<<<" * warning$
   write$
   newline$
