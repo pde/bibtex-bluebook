@@ -661,7 +661,7 @@ FUNCTION {format.names.short}
   s num.names$ 'numnames :=
 
   numnames #2 >
-    { s nameptr "{ff~}{vv~}{ll}" format.name$ " \etal" * }
+    { s nameptr "{vv~}{ll}" format.name$ " \etal" * }
     { % original inlinebib code
       numnames 'namesleft :=
         { namesleft #0 > }
