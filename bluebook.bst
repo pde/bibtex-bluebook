@@ -870,7 +870,7 @@ FUNCTION {book}
       format.number.series output
       new.sentence
       address output
-      format.lots.date output
+      format.lots.date output.nocomma
     }
     { new.block
       format.book.crossref output.nonnull
