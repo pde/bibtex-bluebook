@@ -11,16 +11,16 @@
 % handy functions
 \newcommand{\url}[1]{{\footnotesize{$<$#1$>$}}}
 \newcommand{\etal}{{\em et al.}}
-\newcommand{\See}{{\em See}}
-\newcommand{\see}{{\em see}}
+\newcommand{\See}{{\em See}\xspace}
+\newcommand{\see}{{\em see}\xspace}
 \newcommand{\seeeg}{{\em see, e.g.,}\xspace}
 \newcommand{\Seeeg}{{\em See, e.g.,}\xspace}
 \newcommand{\Seealso}{{\em See also}\xspace}
 \newcommand{\seealso}{{\em see also}\xspace}
 \newcommand{\Butsee}{{\em But see}\xspace}
 \newcommand{\butsee}{{\em but see}\xspace}
-\newcommand{\Cf}{{\em Cf$.$}}
-\newcommand{\cf}{{\em cf$.$}}
+\newcommand{\Cf}{{\em Cf$.$}\xspace}
+\newcommand{\cf}{{\em cf$.$}\xspace}
 \newcommand{\infra}{{\em infra}\xspace}
 \newcommand{\supra}{{\em supra}\xspace}
 
@@ -185,7 +185,7 @@
 \def\@pcite{\@ifnextchar [{\@withpagestrue\@citex}{\@withpagesfalse\@citex[]}}
 
 \def\@citex[#1]#2{%\edef\pincite{#2 {#1} x}
-  %\def\pin{#2}
+  \def\pin{#2}%
   %\def\pincitesubst #1pincitegoeshere#2{#1\pin#2}
   \if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
 	\@ifundefined{b@#2}%
