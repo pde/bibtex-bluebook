@@ -8,6 +8,79 @@
 \ProvidesPackage{bluebook}[1994/12/06\space Inline bibliography style]
 \ProcessOptions
 
+% handy functions
+\newcommand{\url}[1]{{\footnotesize{$<$#1$>$}}}
+\newcommand{\etal}{{\em et al.}}
+\newcommand{\See}{{\em See}\xspace}
+\newcommand{\see}{{\em see}\xspace}
+\newcommand{\seeeg}{{\em see, e.g.,}\xspace}
+\newcommand{\Seeeg}{{\em See, e.g.,}\xspace}
+\newcommand{\Seealso}{{\em See also}\xspace}
+\newcommand{\seealso}{{\em see also}\xspace}
+\newcommand{\Butsee}{{\em But see}\xspace}
+\newcommand{\butsee}{{\em but see}\xspace}
+\newcommand{\infra}{{\em infra}\xspace}
+\newcommand{\supra}{{\em supra}\xspace}
+
+% BLUEBOOK CITATION ABBREVIATIONS
+% (expand as necessary)
+
+\newcommand{\biband}{\& }
+\newcommand{\bibcomma}{}
+\newcommand{\bibin}{}
+\newcommand{\bibof}{}
+\newcommand{\bibThe}{}
+\newcommand{\bibthe}{}
+\newcommand{\bibgap}{~}
+\newcommand{\American}{Am.\xspace}
+\newcommand{\Boston}{B.\xspace}
+\newcommand{\Chicago}{Chi.\xspace}
+\newcommand{\Columbia}{Colum.\xspace}
+\newcommand{\Communications}{Comm.\xspace}
+\newcommand{\Connecticut}{Conn.\xspace}
+\newcommand{\Economic}{Eco.\xspace}
+\newcommand{\Economics}{Eco.\xspace}
+\newcommand{\Entertainment}{Ent.\xspace}
+\newcommand{\Environmental}{Env.\xspace}
+\newcommand{\European}{Eur.\xspace}
+\newcommand{\Government}{Gov't\xspace}
+\newcommand{\Harvard}{Harv.\xspace}
+\newcommand{\History}{Hist.\xspace}
+\newcommand{\Law}{L.\xspace}
+\newcommand{\LawJournal}{L.J.\xspace}
+\newcommand{\Industrial}{Indus.\xspace}
+\newcommand{\Information}{Info.\xspace}
+\newcommand{\Intellectual}{Intell.\xspace}
+\newcommand{\International}{Int.\xspace}
+\newcommand{\Journal}{J.\xspace}
+\newcommand{\JournalOfLaw}{J.L.\xspace}
+\newcommand{\National}{Nat'l\xspace}
+\newcommand{\NewYork}{N.Y.\xspace}
+\newcommand{\North}{N.\xspace}
+\newcommand{\Northwestern}{Nw.\xspace}
+\newcommand{\Magazine}{Mag.\xspace}
+\newcommand{\Michigan}{Mich.\xspace}
+\newcommand{\Oregon}{Or.\xspace}
+\newcommand{\Patent}{Pat.\xspace}
+\newcommand{\Philosophy}{Phil.\xspace}
+\newcommand{\Policy}{Pol'y\xspace}
+\newcommand{\Politics}{Pol.\xspace}
+\newcommand{\Property}{Prop.\xspace}
+\newcommand{\Public}{Pub.\xspace}
+\newcommand{\Quarterly}{Q.\xspace}
+\newcommand{\Report}{Rep.\xspace}
+\newcommand{\Research}{Res.\xspace}
+\newcommand{\Review}{Rev.\xspace}
+\newcommand{\Society}{Soc'y\xspace}
+\newcommand{\Social}{Soc.\xspace}
+\newcommand{\Studies}{Stud.\xspace}
+\newcommand{\System}{Sys.\xspace}
+\newcommand{\Technology}{Tech.\xspace}
+\newcommand{\Telecommunications}{Telecomm.\xspace}
+\newcommand{\University}{U.\xspace}
+\newcommand{\Vanderbilt}{Vand.\xspace}
+\newcommand{\Virginia}{Va.\xspace}
+
   %% Fixed texts
 \def\@bib@ibid{{\em id.}}
 \def\@bib@cit{cit.}
