@@ -978,7 +978,7 @@ FUNCTION {inproceedings}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       %format.number.series output
-      format.pages output
+      format.pages.norange output
       % python hackery
       % "\pincite" output.nocomma
       address empty$
