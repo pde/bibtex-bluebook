@@ -543,7 +543,7 @@ FUNCTION {format.pages.norange}
           pages
           first.page.in.range
         }
-        { "p." pages tie.or.space.connect }
+        { pages }
         %{ "pp." pages n.dashify tie.or.space.connect }
         %{ "p." pages tie.or.space.connect }
       if$
@@ -839,6 +839,8 @@ FUNCTION {article}
     'skip$
   if$
   journal smallcaps "journal" output.check.nocomma
+  % next line for python hackery
+  %format.pages.norange "\jpincite" * output.nocomma
   format.pages.norange output.nocomma
   format.date "year" output.check.nocomma
   format.url output
@@ -861,6 +863,10 @@ FUNCTION {book}
   if$
   new.block
   title smallcaps "title" output.check
+
+  % next line of python hackery
+  % "\pincite" output.nocomma
+
   % cunning hackery to get pincites working
   %"\csname P@" cite$ "\endcsname" * * output
   %"\ifthenelse{\isundef{" cite$ "}}{}{\deref{P@" cite$ "}}" * * * * output
@@ -973,6 +979,8 @@ FUNCTION {inproceedings}
       format.bvolume output
       %format.number.series output
       format.pages output
+      % python hackery
+      % "\pincite" output.nocomma
       address empty$
         { %organization publisher new.sentence.checkb
           %organization output
@@ -1058,6 +1066,8 @@ FUNCTION {misc}
   howpublished new.block.checka
   howpublished output
   format.date output
+  % python hackery
+  % "\pincite" output.nocomma
   new.block
   format.url output
   output.note
