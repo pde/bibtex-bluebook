@@ -818,6 +818,7 @@ FUNCTION {book}
     }
   if$
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -833,6 +834,7 @@ FUNCTION {booklet}
   address output
   format.date output
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -868,6 +870,7 @@ FUNCTION {inbook}
   format.edition output
   format.date "year" output.check
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -893,6 +896,7 @@ FUNCTION {incollection}
     }
   if$
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -928,6 +932,7 @@ FUNCTION {inproceedings}
     }
   if$
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -981,6 +986,7 @@ FUNCTION {mastersthesis}
   address output
   format.date "year" output.check
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -995,6 +1001,7 @@ FUNCTION {misc}
   howpublished output
   format.date output
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -1012,6 +1019,7 @@ FUNCTION {phdthesis}
   address output
   format.date "year" output.check
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
@@ -1057,6 +1065,7 @@ FUNCTION {techreport}
   address output
   format.date "year" output.check
   new.block
+  format.url output
   output.note
   fin.entry
   format.shortref
