@@ -606,7 +606,46 @@ FUNCTION {format.incoll.inproc.crossref}
 { "in: \cite{" crossref * "}" *
 }
 
+FUNCTION {format.names.short}
+{ 's :=
+  #1 'nameptr :=
+  s num.names$ 'numnames :=
+
+  numnames #2 >
+    { s nameptr "{ff~}{vv~}{ll}" format.name$ " \etal" * }
+    { % original inlinebib code
+      numnames 'namesleft :=
+        { namesleft #0 > }
+        { s nameptr "{vv~}{ll}" format.name$ 't :=
+          nameptr #1 >
+            { namesleft #1 >
+                { ", " * t * }
+                { t "others" =
+                    { " et al." * }
+                    { " \& " * t * }
+                  if$
+                }
+              if$
+            }
+            't
+          if$
+          nameptr #1 + 'nameptr :=
+          namesleft #1 - 'namesleft :=
+        }
+      while$
+    }
+  if$
+}
+
 FUNCTION {format.author.short}
+{ author empty$
+    { "" }
+    { author format.names.short }
+  if$
+}
+
+
+FUNCTION {format.author.short.inlinebib}
 { ""
   author empty$
   shortauthor empty$
@@ -764,7 +803,7 @@ FUNCTION {book}
   new.block
   title smallcaps "title" output.check
   % cunning hackery to get pincites working
-  " \pincite " output
+  % " \pincite " output
   crossref missing$
     { format.bvolume output
       new.block
