@@ -1,9 +1,10 @@
-% Bibliography style for footnote references.  The citation is t
+% Bibliography style for footnote references.  The citation is to
 % complete reference the first time, and a shorter reference the
 % following times.  It uses an optional shorttitle entry in the database
 % for the short reference.  For use with inlinebib.sty.
 
 % Changes made are Copyright (C) 1999 René Seindal
+% and (c) 2002-2004 Peter Eckersley
 
 % This program can redistributed and/or modified under the terms
 % of the LaTeX Project Public License Distributed from CTAN
